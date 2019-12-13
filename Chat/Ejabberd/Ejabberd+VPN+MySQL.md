@@ -23,22 +23,27 @@
 
 ---
 1) **`sudo apt-get install mysql`**
----
 2) **`sudo service mysql start`**
 ---
 
 Логинимся в Mysql и создаем новую БД с именем Ejabberd:
+
 ---
 3) **`mysql -u root -p`**
 4) **`CREATE DATABASE ejabberd;`**
 ---
+
 Создаем нового пользователя с именем ejabberd и закрываем Mysql:
 
+---
 5) **`GRANT ALL ON ejabberd.* TO 'ejabberd'@'localhost' IDENTIFIED BY 'пароль пользователя';`**
 6) **`quit;`**
+---
 
 3) <h3>Конфигурация сервера<h3>
+  
+Далее с помощью текстового редактора открываем файл ejabberd.yml с правами суперпользователя:
 
-После установки пакета, проверяем наличие файла ejabberd.yml командой list по пути:
+
 
 
