@@ -21,13 +21,15 @@
 
 2) <h3>Установка и настройка БД Mysql</h3>
 
-Устанавливаем с официального репозитория:
+Устанавливаем пакет с репозитория Ubuntu:
+
 ---
 1) **`sudo apt-get install mysql`**
 ---
 2) **`sudo service mysql start`**
 ---
-Создаем новую БД с именем ejabberd:
 
-3)
-3) CREATE DATABASE ejabberd;
+Логинимся в Mysql и создаем новую БД с именем ejabberd:
+
+3) **`mysql -u root -p`**
+4) **`CREATE DATABASE ejabberd;`**
