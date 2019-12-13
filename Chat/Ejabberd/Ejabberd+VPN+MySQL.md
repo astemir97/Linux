@@ -13,9 +13,7 @@
 
 ---
 2) **`sudo apt-get install ejabberd`** - устанавливаем с репозитрия Ubuntu - Ejabebrd
----
 3) **`sudo apt-get install erlang-p1-mysql`** - важный пакет erlang для работы с DB Mysql
----
 4) **`sudo service ejabberd stop`** - останавливаем сервис для дальнейшей конфигурации
 ---
 
