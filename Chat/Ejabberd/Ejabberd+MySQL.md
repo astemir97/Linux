@@ -90,7 +90,7 @@
 <i>Внимание! Во время перезагрузки службы ejabberdctl вы можете столкнуться с ошибкой</i>
 
 ---
-**`/usr/sbin/ejabberdctl: line 428: 4052 Segmentation fault $EXEC_CMD`**
+ **`/usr/sbin/ejabberdctl: line 428: 4052 Segmentation fault $EXEC_CMD`**
 ---
 
 Как её исправить: открываем файл:
