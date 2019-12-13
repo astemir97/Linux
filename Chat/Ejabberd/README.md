@@ -9,7 +9,7 @@
 
 1) **`sudo apt-get install ejabberd`**
 ---
-2) **`sudo apt-get install erlang-p1-mysql - крайне важный пакет erlang!`**
+2) **`sudo apt-get install erlang-p1-mysql - важный пакет erlang для работы с DB Mysql!`**
 ---
 3) **`sudo service ejabberd stop`**
 ---
