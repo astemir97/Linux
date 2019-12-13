@@ -8,7 +8,9 @@
 или:
 
 **`sudo apt-get install ejabberd`**
+---
 **`sudo apt-get install erlang-p1-mysql - крайне важный пакет erlang!`**
+---
 **`sudo service ejabberd stop`**
 
 На Ubuntu 16.04 и ниже - Не выполнять apt update!
