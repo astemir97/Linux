@@ -12,7 +12,7 @@
 <i>последняя актуальная вресия для данной OS - Ejabberd 16.01</i>
 
 ---
-2) **`sudo apt-get install ejabberd`** - устанавливаем с репозитрия ubuntu - ejabebrd
+2) **`sudo apt-get install ejabberd`** - устанавливаем с репозитрия Ubuntu - Ejabebrd
 ---
 3) **`sudo apt-get install erlang-p1-mysql`** - важный пакет erlang для работы с DB Mysql
 ---
