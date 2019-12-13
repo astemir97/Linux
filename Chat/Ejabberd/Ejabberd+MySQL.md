@@ -87,6 +87,27 @@
 19) **`ejabberdctl restart`**
 ---
 
+<i>Внимание! Во время перезагрузки службы ejabberdctl вы можете столкнуться с ошибкой</i>
+
+`/usr/sbin/ejabberdctl: line 428: 4052 Segmentation fault $EXEC_CMD`
+
+Как её исправить: открываем файл:
+
+---
+ **`/etc/apparmor.d/usr.sbin.ejabberdctl`**
+---
+
+Находим строку в файле:
+
+ **`/bin/su                     r,`**
+
+И добавляем букву "m" сразу после буквы "r" сохраняем и перезагружаем ejabberdctl:
+
+---
+ **`/bin/su                     rm,`**
+ **`ejabberrdctl restart`**
+---
+
 Переходим по url-адресу: https://имя_сервера:5280/admin (SSL - обязательно) и вводим JID созданного администратора (admin@имя_сервера) и созданный пароль
 
 
