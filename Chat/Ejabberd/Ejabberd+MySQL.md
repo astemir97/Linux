@@ -82,14 +82,16 @@
 Добавляем нового пользователя admin с помощью утилиты ejabberdctl и делаем перезагрузку:
 
 ---
-17) **`ejabberdctl register admin bereg.web.local.net пароль пользователя`**
+17) **`ejabberdctl register admin имя_сервера(полность) пароль пользователя`**
 18) **`sudo service ejabberd restart`**
 19) **`ejabberdctl restart`**
 ---
 
 <i>Внимание! Во время перезагрузки службы ejabberdctl вы можете столкнуться с ошибкой</i>
 
-`/usr/sbin/ejabberdctl: line 428: 4052 Segmentation fault $EXEC_CMD`
+---
+**`/usr/sbin/ejabberdctl: line 428: 4052 Segmentation fault $EXEC_CMD`**
+---
 
 Как её исправить: открываем файл:
 
