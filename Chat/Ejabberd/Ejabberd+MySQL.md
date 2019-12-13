@@ -12,9 +12,9 @@
 <i>последняя актуальная вресия для данной OS - Ejabberd 16.01</i>
 
 ---
-2) **`sudo apt-get install ejabberd`** - устанавливаем с репозитрия Ubuntu - Ejabebrd
-3) **`sudo apt-get install erlang-p1-mysql`** - важный пакет erlang для работы с DB Mysql
-4) **`sudo service ejabberd stop`** - останавливаем сервис для дальнейшей конфигурации
+1) **`sudo apt-get install ejabberd`** - устанавливаем с репозитрия Ubuntu - Ejabebrd
+2) **`sudo apt-get install erlang-p1-mysql`** - важный пакет erlang для работы с DB Mysql
+3) **`sudo service ejabberd stop`** - останавливаем сервис для дальнейшей конфигурации
 ---
 
 2) <h3>Установка и настройка БД Mysql</h3>
@@ -29,15 +29,15 @@
 Логинимся в Mysql и создаем новую БД с именем Ejabberd:
 
 ---
-3) **`mysql -u root -p`**
-4) **`CREATE DATABASE ejabberd;`**
+1) **`mysql -u root -p`**
+2) **`CREATE DATABASE ejabberd;`**
 ---
 
 Создаем нового пользователя с именем ejabberd и закрываем Mysql:
 
 ---
-5) **`GRANT ALL ON ejabberd.* TO 'ejabberd'@'localhost' IDENTIFIED BY 'пароль пользователя';`**
-6) **`quit;`**
+1) **`GRANT ALL ON ejabberd.* TO 'ejabberd'@'localhost' IDENTIFIED BY 'пароль пользователя';`**
+2) **`quit;`**
 ---
 
 3) <h3>Конфигурация сервера</h3>
@@ -45,7 +45,7 @@
 Далее с помощью текстового редактора открываем файл ejabberd.yml с правами суперпользователя:
 
 ---
-7) **`vim /etc/ejabberd/ejabberd.yml`**
+1) **`vim /etc/ejabberd/ejabberd.yml`**
 ---
 
 <i>"Внимание! Обращаем внимание на то, что файл с расширением .yml имеет крайне чувствительный синтаксис YAML, не рекомендуется переносить строки, ставить лишние пробелы в отличии от тех, которые уже существуют в самом файле, и не в коем случае не нажимать на клавишу табуляции" (Tab).</i>
@@ -53,38 +53,38 @@
 Находим строку с перечислением хостов hosts, меняем значение localhost на имя вашего сервера:
 
 ---
-8) **`hosts: ["имя сервера(полоностью)"]`**
+1) **`hosts: ["имя сервера(полоностью)"]`**
 ---
 
-Далее находим закоментированную строку ## MySQL server: и меняем значения на те, которые вы ввели mysql, попутно раскоментирую все строки ниже:
+Далее находим закоментированную строку ## MySQL server: и меняем значения на те, которые вы ввели mysql, попутно раскоментирую все строки ниже и ОБЯЗАТЕЛЬНО УБИРАЯ ПРОБЕЛЫ ДО НАЧАЛА ФАЙЛА!:
 
 ---
-9)  **`odbc_type: mysql`**
-10) **`odbc_server: "localhost"`**
-11) **`odbc_database: "ejabberd"`**
-12) **`odbc_username: "ejabberd"`**
-13) **`odbc_password: "пароль пользователя"`**
+1) **`odbc_type: mysql`**
+2) **`odbc_server: "localhost"`**
+3) **`odbc_database: "ejabberd"`**
+4) **`odbc_username: "ejabberd"`**
+5) **`odbc_password: "пароль пользователя"`**
 ---
 
 Находим последнюю строку admin и меняем хост подключения с localhost на имя сервера:
 
 ---
-14) **`"admin": "bereg.web.local.net"`**
+1) **`"admin": "bereg.web.local.net"`**
 ---
 
 Запускаем сервис ejabberd и делаем рестарт ejabberdctl:
 
 ---
-15) **`sudo service ejabberd start`**
-16) **`ejabberdctl start`**
+1) **`sudo service ejabberd start`**
+2) **`ejabberdctl start`**
 ---
 
 Добавляем нового пользователя admin с помощью утилиты ejabberdctl и делаем перезагрузку:
 
 ---
-17) **`ejabberdctl register admin имя_сервера(полность) пароль пользователя`**
-18) **`sudo service ejabberd restart`**
-19) **`ejabberdctl restart`**
+1) **`ejabberdctl register admin имя_сервера(полность) пароль пользователя`**
+2) **`sudo service ejabberd restart`**
+3) **`ejabberdctl restart`**
 ---
 
 <i>Внимание! Во время перезагрузки службы ejabberdctl вы можете столкнуться с ошибкой:</i>
@@ -95,21 +95,21 @@
 Открываем файл:
 
 ---
- * **`/etc/apparmor.d/usr.sbin.ejabberdctl`**
+1) **`/etc/apparmor.d/usr.sbin.ejabberdctl`**
 ---
 
 Находим строку в файле:
 
 ---
- * **`/bin/su                     r,`**
+1) **`/bin/su                     r,`**
 ---
 
 И добавляем букву "m" сразу после буквы "r" сохраняем файл и перезагружаем службы apparmor и ejabberdctl:
 
 ---
- * **`/bin/su                     rm,`**
- * **`sudo service apparmor restart`**
- * **`ejabberrdctl restart`**
+1) **`/bin/su                     rm,`**
+2) **`sudo service apparmor restart`**
+3) **`ejabberrdctl restart`**
 ---
 
 Переходим по url-адресу: https://имя_сервера:5280/admin (SSL - обязательно) и вводим JID созданного администратора (admin@имя_сервера) и созданный пароль
@@ -122,27 +122,27 @@
 Узнаем ip-адреса удаленного сервера имеющего подключение по VPN и создаем маршрутизацию:
 
 ---
-20) **`route add -net 192.168.6.23 netmask 255.255.255.0 gateway 172.16.5.8 (интерфейс подключения) eno3`**
-21) **`route add -net 10.3.0.2 netmask 255.255.255.255 gateway 172.16.5.8 (интерфейс подключения) eno3`**
+1) **`route add -net 192.168.6.23 netmask 255.255.255.0 gateway 172.16.5.8 (интерфейс подключения) eno3`**
+2) **`route add -net 10.3.0.2 netmask 255.255.255.255 gateway 172.16.5.8 (интерфейс подключения) eno3`**
 ---
 
 Проверяем утилитой netstat маршрутизацию подключений:
 
 ---
-22) **`netstat -n -r`**
+1) **`netstat -n -r`**
 ---
 Редактируем DNS-сервер по-умолчанию в файле /etc/resolv.conf
 
 ---
-23) **`vim /etc/resolv.conf`**
-24) **`nameserver 172.16.5.88`**
+1) **`vim /etc/resolv.conf`**
+2) **`nameserver 172.16.5.88`**
 ---
 
 Пингуем сервера:  и 10.3.0.2
 
 ---
-25) **`ping 192.168.6.23`**
-26) **`ping 10.3.0.2`**
+1) **`ping 192.168.6.23`**
+2) **`ping 10.3.0.2`**
 ---
 
 Обязательно говорим системному администратора отвечающего за другой сервер DNS, что мы хотим к нему подключиться, так как ему нужно прописать адрес нашего сервера в свой DNS.
