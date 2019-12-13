@@ -93,7 +93,8 @@
  **`/usr/sbin/ejabberdctl: line 428: 4052 Segmentation fault $EXEC_CMD`**
 ---
 
-Как её исправить: открываем файл:
+Как её исправить: 
+Открываем файл:
 
 ---
  **`/etc/apparmor.d/usr.sbin.ejabberdctl`**
