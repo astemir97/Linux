@@ -59,9 +59,9 @@
 Далее находим закоментированную строку ## MySQL server: и меняем значения на те, которые вы ввели mysql, попутно раскоментирую все строки ниже:
 
 ---
-9) **`odbc_type: mysql`**
-**`odbc_server: "localhost"`**
-**`odbc_database: "ejabberd"`**
-**`odbc_username: "ejabberd"`**
-**`odbc_password: "пароль пользователя"`**
+9)  **`odbc_type: mysql`**
+10) **`odbc_server: "localhost"`**
+11) **`odbc_database: "ejabberd"`**
+12) **`odbc_username: "ejabberd"`**
+13) **`odbc_password: "пароль пользователя"`**
 ---
