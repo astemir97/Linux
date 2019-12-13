@@ -106,10 +106,11 @@
  **`/bin/su                     r,`**
 ---
 
-И добавляем букву "m" сразу после буквы "r" сохраняем и перезагружаем ejabberdctl:
+И добавляем букву "m" сразу после буквы "r" сохраняем файл и перезагружаем службы apparmor и ejabberdctl:
 
 ---
  **`/bin/su                     rm,`**
+ **`sudo service apparmor restart`**
  **`ejabberrdctl restart`**
 ---
 
