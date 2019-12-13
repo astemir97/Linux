@@ -65,3 +65,25 @@
 12) **`odbc_username: "ejabberd"`**
 13) **`odbc_password: "пароль пользователя"`**
 ---
+
+Находим последнюю строку admin и меняем хост подключения с localhost на имя сервера:
+
+---
+14) **`"admin": "bereg.web.local.net"`**
+---
+
+Запускаем сервис ejabberd и делаем рестарт ejabberdctl:
+
+---
+15) **`sudo service ejabberd start`**
+16) **`ejabberdctl start`**
+---
+
+Добавляем нового пользователя admin с помощью утилиты ejabberdctl:
+
+---
+17) **`ejabberdctl register admin bereg.web.local.net пароль пользователя`**
+18) **`sudo service ejabberd restart`**
+19) **`ejabberdctl restart`**
+
+Переходим по url-адресу: https://имя_сервера:5280/admin (SSL - обязательно) и вводим JID созданного администратора (admin@имя_сервера) и созданный пароль
