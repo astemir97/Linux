@@ -40,7 +40,7 @@
 6) **`quit;`**
 ---
 
-3) <h3>Конфигурация сервера<h3>
+3) <h3>Конфигурация сервера</h3>
   
 Далее с помощью текстового редактора открываем файл ejabberd.yml с правами суперпользователя:
 
@@ -97,21 +97,21 @@
 Открываем файл:
 
 ---
- **`/etc/apparmor.d/usr.sbin.ejabberdctl`**
+ * **`/etc/apparmor.d/usr.sbin.ejabberdctl`**
 ---
 
 Находим строку в файле:
 
 ---
- **`/bin/su                     r,`**
+ * **`/bin/su                     r,`**
 ---
 
 И добавляем букву "m" сразу после буквы "r" сохраняем файл и перезагружаем службы apparmor и ejabberdctl:
 
 ---
- **`/bin/su                     rm,`**
- **`sudo service apparmor restart`**
- **`ejabberrdctl restart`**
+ * **`/bin/su                     rm,`**
+ * **`sudo service apparmor restart`**
+ * **`ejabberrdctl restart`**
 ---
 
 Переходим по url-адресу: https://имя_сервера:5280/admin (SSL - обязательно) и вводим JID созданного администратора (admin@имя_сервера) и созданный пароль
