@@ -6,7 +6,8 @@ Ejabberd работает с портами: 5280, 5269, 5222 (5223).
 1) <h3>Установка на ОС Ubuntu 16.04:</h3>
 
 Загружаем пакет с официального сайта - https://github.com/processone/ejabberd/archive/16.01.zip
-Официальный GitHub - https://github.com/processone/ejabberd - тут все модули, скрипты, запросы sql и прочее.
+Официальный GitHub - https://github.com/processone/ejabberd
+тут все модули, скрипты, запросы sql и прочее.
 
 или:
 
