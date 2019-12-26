@@ -169,16 +169,16 @@ Ejabberd работает с портами: 5280, 5269, 5222 (5223).
 5) **`quit;`**
 ---
 
-1) C помощью текстового редактора открываем этот файл с правами суперпользователя и находим строку <i>auth_method</i>:
+C помощью текстового редактора открываем этот файл с правами суперпользователя и находим строку <i>auth_method</i>:
 
 ---
-**`vim /etc/ejabberd/ejabberd.yml`**
-**`auth_method: internal`**
+1) **`vim /etc/ejabberd/ejabberd.yml`**
+2) **`auth_method: internal`**
 Меняем на:
-**`<b>auth_method: odbc`**
+3) **`<b>auth_method: odbc`**
 ---
 
-2) Далее редактируем следующие модули:
+Далее редактируем следующие модули:
 
 * <b>mod_last</b>     <i>правим в</i>  <b>mod_last_odbc</b>
 * <b>mod_muc</b>      <i>правим в</i>  <b>mod_muc_odbc</b>
