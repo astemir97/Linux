@@ -156,3 +156,59 @@ Ejabberd работает с портами: 5280, 5269, 5222 (5223).
 Настройка подключения у удаленному серверу по VPN завершена.
 
 4) <h3>Создание централизованного хранения сообщений и карт пользователей в БД MySQL<h3>
+
+
+== Создание централизованного хранения сообщений и карт пользователей в БД MySQL ==
+
+1) Загружаем файл с запросами в любую папку на сервере: <i>/zroot/soft/Программы/PSI/mysql.sql</i>
+
+2) Заходим в БД Mysql из той же папки куда загрузили файл <i>"mysql.sql"</i>, переходим к базе <i>ejabberd</i> и загружаем его туда:
+
+* <code><b>mysql -u ejabberd -p</b></code>
+* <code><b>use ejabberd;</b></code>
+* <code><b>source mysql.sql;</b></code>
+* <code><b>show tables;</b></code> - проверяем заполнилась ли таблица
+* <code><b>quit;</b></code>
+
+1) C помощью текстового редактора открываем этот файл с правами суперпользователя и находим строку <i>auth_method</i>:
+
+*<code><b>vim /etc/ejabberd/ejabberd.yml</b></code>
+*<code><b>auth_method: internal</b></code>
+Меняем на:
+*<code><b>auth_method: odbc</b></code>
+
+2) Далее редактируем следующие модули:
+
+* <b>mod_last</b>     <i>правим в</i>  <b>mod_last_odbc</b>
+* <b>mod_muc</b>      <i>правим в</i>  <b>mod_muc_odbc</b>
+* <b>mod_privacy</b>  <i>правим в</i>  <b>mod_privacy_odbc</b>
+* <b>mod_private</b>  <i>правим в</i>  <b>mod_private_odbc</b>
+* <b>mod_roster</b>   <i>правим в</i>  <b>mod_roster_odbc</b>
+
+3) Добавляем опции к модулю:
+
+* <b>mod_vcard:</b> { } <i>правим в</i> <b>mod_vcard:</b> {
+                                            search: true
+                          }
+
+* <b>mod_mam:</b> { } <i>правим в</i> <b>mod_mam:</b> {
+                                            db_type: odbc
+                                            default: roster
+                                            request_activates_archiving: true
+                                            cache_size: 1000
+                                            cache_life_time: 3600
+                          }
+4) Перезапускаем сервис <i>ejabberd</i>:
+
+* <code><b>sudo service ejabberd restart</b></code>
+* <code><b>ejabberdctl restart</b></code>
+
+<i>Внимание! Если пропал доступ к личному кабинету <a>jabber:5280/admin</a>, то зарегистрируйте пользователя admin повторно:</i>
+
+* <code><b>ejabberdctl register admin имя_сервера(полностью) пароль пользователя</b></code>
+
+5) Переходим по url-адресу: https://имя-сервера:5280/admin (SSL - обязательно) и вводим JID созданного администратора (admin@bereg.web.local.net) и созданный пароль.
+
+Далее мы попадаем в панель администратора, где нужно завести пользователей и ОБЯЗАТЕЛЬНО поместить их в созданные группы, иначе вы не увидите пользователей в общем ростере. Только после этого мы можем загрузить клиентское приложение себе на компьютер и подключиться к своем аккаунту.
+
+Настройка локального сервера завершена.
