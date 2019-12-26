@@ -155,27 +155,29 @@ Ejabberd работает с портами: 5280, 5269, 5222 (5223).
 
 Настройка подключения у удаленному серверу по VPN завершена.
 
-4) <h3>Создание централизованного хранения сообщений и карт пользователей в БД MySQL<h3>
 
+Создание централизованного хранения сообщений и карт пользователей в БД MySQL<h3>  
 
-== Создание централизованного хранения сообщений и карт пользователей в БД MySQL ==
+Загружаем файл с запросами в любую папку на сервере: `/zroot/soft/Программы/PSI/mysql.sql`
 
-1) Загружаем файл с запросами в любую папку на сервере: <i>/zroot/soft/Программы/PSI/mysql.sql</i>
+Заходим в БД Mysql из той же папки куда загрузили файл "mysql.sql", переходим к базе ejabberd и загружаем его туда:
 
-2) Заходим в БД Mysql из той же папки куда загрузили файл <i>"mysql.sql"</i>, переходим к базе <i>ejabberd</i> и загружаем его туда:
-
-* <code><b>mysql -u ejabberd -p</b></code>
-* <code><b>use ejabberd;</b></code>
-* <code><b>source mysql.sql;</b></code>
-* <code><b>show tables;</b></code> - проверяем заполнилась ли таблица
-* <code><b>quit;</b></code>
+---
+**`mysql -u ejabberd -p`**
+**`use ejabberd;`**
+**`source mysql.sql;`**
+**`show tables;`** - проверяем заполнилась ли таблица
+**`quit;`**
+---
 
 1) C помощью текстового редактора открываем этот файл с правами суперпользователя и находим строку <i>auth_method</i>:
 
-*<code><b>vim /etc/ejabberd/ejabberd.yml</b></code>
-*<code><b>auth_method: internal</b></code>
+---
+**`vim /etc/ejabberd/ejabberd.yml`**
+**`auth_method: internal`**
 Меняем на:
-*<code><b>auth_method: odbc</b></code>
+**`<b>auth_method: odbc`**
+---
 
 2) Далее редактируем следующие модули:
 
