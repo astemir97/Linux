@@ -1,1 +1,1 @@
-<h2>Все о работе с Linux</h2>
+<h2>Linux docks</h2>
